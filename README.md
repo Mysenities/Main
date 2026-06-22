@@ -1,5 +1,5 @@
 # Giới thiệu
-Xin chào thành viên, giáo viên
+Xin chào thành viên/giáo viên
 Đây là trang github được sử dụng chính để lập trình không gián đoạn giữa các thành viên.
 
 Bắt đầu bằng cách truy cập vào codespace của trang:
