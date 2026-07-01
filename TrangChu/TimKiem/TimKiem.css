@@ -1,0 +1,39 @@
+.tim-kiem-card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+.tim-kiem-card h2 {
+  margin-top: 0;
+  color: #1d4ed8;
+}
+
+.search-box {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.search-box input {
+  flex: 1;
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+}
+
+.search-box button {
+  padding: 10px 14px;
+  border: none;
+  background: #2563eb;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.hint {
+  margin-top: 10px;
+  color: #6b7280;
+  font-size: 0.9rem;
+}
