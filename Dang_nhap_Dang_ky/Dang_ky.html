@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Báo điện tử - Đăng ký</title>
+<link rel="stylesheet" href="Dang_ky.css">
+</head>
+<body>
+ 
+<header class="site-header">
+  <div class="header-top">
+    <div style="display:flex;align-items:center;">
+      <span class="brand">Báo điện tử</span>
+      <div class="top-nav">
+        <a href="#">Trang chủ</a>
+        <a href="#">Thư viện</a>
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="search-box">
+        <input type="text" placeholder="Tìm...">
+      </div>
+      <a class="adv-link" href="#">Tìm nâng cao</a>
+      <div class="avatar-small"></div>
+    </div>
+  </div>
+  <nav class="main-nav">
+    <a href="#">Thời sự</a>
+    <a href="#">Thế giới</a>
+    <a href="#">Kinh doanh</a>
+    <a href="#">Khoa học công nghệ</a>
+    <a href="#">Bất động sản</a>
+    <a href="#">Sức khỏe</a>
+    <a href="#">Giáo dục</a>
+    <a href="#">Pháp luật</a>
+  </nav>
+</header>
+ 
+<div class="auth-wrapper">
+  <div class="auth-card">
+ 
+    <!-- ĐĂNG KÝ -->
+    <form class="auth-form" id="registerForm">
+      <h2 class="auth-title">Tạo tài khoản mới</h2>
+      <p class="auth-subtitle">Tham gia để cá nhân hóa trải nghiệm đọc báo của bạn.</p>
+ 
+      <div class="field">
+        <label for="regName">Họ và tên</label>
+        <input type="text" id="regName" placeholder="Nguyễn Văn A" required>
+        <span class="error-msg" id="regNameError"></span>
+      </div>
+ 
+      <div class="field">
+        <label for="regEmail">Email</label>
+        <input type="email" id="regEmail" placeholder="ban@email.com" required>
+        <span class="error-msg" id="regEmailError"></span>
+      </div>
+ 
+      <div class="field">
+        <label for="regPhone">Số điện thoại</label>
+        <input type="tel" id="regPhone" placeholder="09xxxxxxxx" required>
+        <span class="error-msg" id="regPhoneError"></span>
+      </div>
+ 
+      <div class="field">
+        <label for="regPassword">Mật khẩu</label>
+        <div class="password-wrap">
+          <input type="password" id="regPassword" placeholder="Tối thiểu 8 ký tự" required>
+          <button type="button" class="toggle-pw" data-target="regPassword">👁</button>
+        </div>
+        <div class="pw-strength" id="pwStrength">
+          <div class="pw-strength-bar" id="pwStrengthBar"></div>
+        </div>
+        <span class="error-msg" id="regPasswordError"></span>
+      </div>
+ 
+      <div class="field">
+        <label for="regConfirmPassword">Xác nhận mật khẩu</label>
+        <div class="password-wrap">
+          <input type="password" id="regConfirmPassword" placeholder="Nhập lại mật khẩu" required>
+          <button type="button" class="toggle-pw" data-target="regConfirmPassword">👁</button>
+        </div>
+        <span class="error-msg" id="regConfirmPasswordError"></span>
+      </div>
+ 
+      <label class="checkbox-label">
+        <input type="checkbox" id="agreeTerms">
+        <span>Tôi đồng ý với <a href="#">Điều khoản sử dụng</a> và <a href="#">Chính sách bảo mật</a></span>
+      </label>
+      <span class="error-msg" id="agreeTermsError"></span>
+ 
+      <button type="submit" class="btn btn-primary btn-block">Đăng ký</button>
+ 
+      <p class="auth-switch">Đã có tài khoản? <a href="dang-nhap.html">Đăng nhập</a></p>
+    </form>
+ 
+  </div>
+</div>
+ 
+<div class="toast" id="toast"></div>
+ 
+<script src="dang-ky.js"></script>
+</body>
+</html>

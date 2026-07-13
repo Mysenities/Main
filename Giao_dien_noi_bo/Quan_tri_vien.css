@@ -1,0 +1,74 @@
+:root{
+    --ink:#1E2A45;
+    --ink-2:#2C3B5C;
+    --paper:#F5F3EE;
+    --card:#FFFFFF;
+    --line:#E4E0D6;
+    --text:#26241F;
+    --text-mute:#726F65;
+    --teal:#1F8A70;
+    --teal-bg:#E4F2ED;
+    --amber:#C9820D;
+    --amber-bg:#FBEFDA;
+    --coral:#C1502E;
+    --coral-bg:#F8E7DF;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;font-family:'Inter',sans-serif;background:var(--paper);color:var(--text);}
+  h1,h2,h3,.brand,.tab{font-family:'Be Vietnam Pro',sans-serif;}
+ 
+  .app{max-width:1120px;margin:0 auto;padding:28px 24px 60px;}
+ 
+  header.top{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px;}
+  .brand{font-size:20px;font-weight:700;color:var(--ink);}
+  .brand span{color:var(--teal);}
+  .who{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--text-mute);}
+  .avatar{width:36px;height:36px;border-radius:50%;background:var(--ink);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:14px;}
+ 
+  .grid{display:grid;grid-template-columns:2fr 1fr;gap:20px;}
+  @media(max-width:760px){.grid{grid-template-columns:1fr;}}
+ 
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px;margin-bottom:20px;}
+  .card h2{font-size:17px;margin:0 0 4px;color:var(--ink);}
+  .card .sub{font-size:13px;color:var(--text-mute);margin:0 0 16px;}
+ 
+  .stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:20px;}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px 18px;}
+  .stat .n{font-size:26px;font-weight:700;color:var(--ink);font-family:'Be Vietnam Pro',sans-serif;}
+  .stat .l{font-size:13px;color:var(--text-mute);margin-top:2px;}
+ 
+  .btn{
+    border:1px solid var(--ink);background:var(--ink);color:#fff;padding:10px 18px;
+    border-radius:9px;font-weight:600;font-size:14px;cursor:pointer;
+  }
+  .btn.ghost{background:transparent;color:var(--ink);}
+ 
+  ul.list{list-style:none;margin:0;padding:0;}
+  ul.list li{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:12px 0;border-top:1px solid var(--line);font-size:14px;
+  }
+  ul.list li:first-child{border-top:none;}
+  .tag{font-size:12px;font-weight:600;padding:4px 10px;border-radius:20px;}
+  .tag.teal{background:var(--teal-bg);color:var(--teal);}
+  .tag.amber{background:var(--amber-bg);color:var(--amber);}
+  .tag.coral{background:var(--coral-bg);color:var(--coral);}
+ 
+  /* Admin: approval rows */
+  .approve-row{
+    display:flex;justify-content:space-between;align-items:center;gap:12px;
+    padding:12px 0;border-top:1px solid var(--line);
+  }
+  .approve-row:first-child{border-top:none;}
+  .approve-row .who2{font-size:14px;font-weight:600;}
+  .approve-row .meta{font-size:12px;color:var(--text-mute);}
+  .actions button{
+    width:32px;height:32px;border-radius:8px;border:1px solid var(--line);
+    background:var(--card);cursor:pointer;font-size:14px;margin-left:6px;
+  }
+  .actions button.ok{color:var(--teal);border-color:var(--teal);}
+  .actions button.no{color:var(--coral);border-color:var(--coral);}
+ 
+  table{width:100%;border-collapse:collapse;font-size:14px;}
+  th{text-align:left;color:var(--text-mute);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.03em;padding:8px 6px;border-bottom:1px solid var(--line);}
+  td{padding:10px 6px;border-bottom:1px solid var(--line);}

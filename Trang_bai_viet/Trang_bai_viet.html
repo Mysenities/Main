@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Báo điện tử - Trang bài viết</title>
+<link rel="stylesheet" href="Trang_bai_viet.css">
+</head>
+<body>
+ 
+<header class="site-header">
+  <div class="header-top">
+    <div style="display:flex;align-items:center;">
+      <span class="brand">Báo điện tử</span>
+      <div class="top-nav">
+        <a href="#">Trang chủ</a>
+        <a href="#">Thư viện</a>
+      </div>
+    </div>
+    <div class="header-right">
+      <div class="search-box">
+        <input type="text" placeholder="Tìm...">
+      </div>
+      <a class="adv-link" href="#">Tìm nâng cao</a>
+      <div class="avatar-small"></div>
+    </div>
+  </div>
+  <nav class="main-nav">
+    <a href="#">Thời sự</a>
+    <a href="#">Thế giới</a>
+    <a href="#">Kinh doanh</a>
+    <a href="#">Khoa học công nghệ</a>
+    <a href="#">Bất động sản</a>
+    <a href="#">Sức khỏe</a>
+    <a href="#">Giáo dục</a>
+    <a href="#">Pháp luật</a>
+  </nav>
+</header>
+ 
+<div class="container">
+  <div class="content-layout">
+ 
+    <!-- Trang bài viết -->
+    <main>
+      <div class="breadcrumb">Trang chủ / <span>Kinh doanh</span></div>
+      <span class="article-category">Kinh doanh</span>
+      <h1 class="article-title">Giá vàng vượt 100 triệu đồng/lượng lần đầu trong lịch sử</h1>
+ 
+      <div class="article-toolbar">
+        <div class="author-inline">
+          <div class="author-avatar-sm">NA</div>
+          <div>
+            <div class="author-name-sm">Nguyễn An</div>
+            <div class="article-date">27/06/2026 · 08:15</div>
+          </div>
+        </div>
+ 
+        <div class="toolbar-actions">
+          <button class="action-btn" id="saveBtn">
+            <span class="icon" id="saveIcon">🔖</span>
+            <span id="saveLabel">Lưu bài viết</span>
+          </button>
+          <button class="action-btn" id="shareBtn">
+            <span class="icon">🔗</span>
+            <span>Chia sẻ</span>
+          </button>
+        </div>
+      </div>
+ 
+      <div class="article-thumb-large">📷</div>
+ 
+      <div class="article-body">
+        <p><strong>Giá vàng trong nước hôm nay tiếp tục lập đỉnh mới</strong>, lần đầu tiên vượt mốc 100 triệu đồng/lượng, sau khi giá vàng thế giới tăng vọt giữa lo ngại lạm phát toàn cầu leo thang.</p>
+        <p>Theo ghi nhận tại thị trường Hà Nội và TP.HCM, các doanh nghiệp kinh doanh vàng lớn đồng loạt điều chỉnh giá mua vào và bán ra, với biên độ chênh lệch được nới rộng nhằm giảm thiểu rủi ro biến động.</p>
+        <p>Giới phân tích nhận định đà tăng của giá vàng còn có thể tiếp diễn trong ngắn hạn, khi dòng tiền toàn cầu tiếp tục tìm đến các tài sản trú ẩn an toàn trước những bất ổn kinh tế và địa chính trị.</p>
+        <p>Người dân được khuyến cáo cân nhắc kỹ trước khi giao dịch, tránh tâm lý đám đông trong bối cảnh thị trường biến động mạnh từng giờ.</p>
+      </div>
+ 
+      <!-- Khối tác giả: theo dõi -->
+      <div class="author-box">
+        <div class="author-box-left">
+          <div class="author-avatar-lg">NA</div>
+          <div>
+            <div class="author-name-lg">Nguyễn An</div>
+            <div class="author-role">Phóng viên Kinh doanh - Công nghệ</div>
+            <div class="author-followers"><span id="followerCount">15.3K</span> người theo dõi</div>
+          </div>
+        </div>
+        <button class="btn btn-primary" id="followBtn">Theo dõi</button>
+      </div>
+    </main>
+ 
+    <!-- Sidebar -->
+    <aside>
+      <div class="panel">
+        <div class="panel-header">Bài viết đã lưu</div>
+        <div class="panel-body">
+          <div id="savedList" class="saved-list"></div>
+        </div>
+      </div>
+    </aside>
+  </div>
+</div>
+ 
+<div class="toast" id="toast"></div>
+ 
+<script src="trang-bai-viet.js"></script>
+</body>
+</html>

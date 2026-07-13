@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Trang quản trị viên</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="Quan_tri_vien.css">
+</head>
+<body>
+<div class="app">
+ 
+  <header class="top">
+    <div class="brand">Nội bộ<span>.</span>Công ty</div>
+    <div class="who"><div class="avatar">LH</div> Lê Hòa · Quản trị viên</div>
+  </header>
+ 
+  <div class="stat-row">
+    <div class="stat"><div class="n">128</div><div class="l">Nhân viên đang hoạt động</div></div>
+    <div class="stat"><div class="n">6</div><div class="l">Đơn chờ duyệt</div></div>
+    <div class="stat"><div class="n">4</div><div class="l">Nhân viên nghỉ hôm nay</div></div>
+  </div>
+ 
+  <div class="grid">
+    <div>
+      <div class="card">
+        <h2>Danh sách nhân viên</h2>
+        <p class="sub">Xem nhanh trạng thái làm việc hôm nay</p>
+        <table>
+          <tr><th>Họ tên</th><th>Phòng ban</th><th>Trạng thái</th></tr>
+          <tr><td>Trần An</td><td>Kinh doanh</td><td><span class="tag teal">Đang làm việc</span></td></tr>
+          <tr><td>Ngô Bích</td><td>Kế toán</td><td><span class="tag teal">Đang làm việc</span></td></tr>
+          <tr><td>Phạm Duy</td><td>Kỹ thuật</td><td><span class="tag amber">Đi muộn</span></td></tr>
+          <tr><td>Vũ Hạnh</td><td>Nhân sự</td><td><span class="tag coral">Nghỉ phép</span></td></tr>
+        </table>
+      </div>
+    </div>
+ 
+    <div>
+      <div class="card">
+        <h2>Đơn chờ duyệt</h2>
+        <div class="approve-row">
+          <div><div class="who2">Trần An</div><div class="meta">Nghỉ phép · 15–16/07</div></div>
+          <div class="actions"><button class="ok">✓</button><button class="no">✕</button></div>
+        </div>
+        <div class="approve-row">
+          <div><div class="who2">Phạm Duy</div><div class="meta">Làm thêm giờ · 14/07</div></div>
+          <div class="actions"><button class="ok">✓</button><button class="no">✕</button></div>
+        </div>
+        <div class="approve-row">
+          <div><div class="who2">Ngô Bích</div><div class="meta">Công tác · 20–22/07</div></div>
+          <div class="actions"><button class="ok">✓</button><button class="no">✕</button></div>
+        </div>
+      </div>
+ 
+      <div class="card">
+        <h2>Thao tác nhanh</h2>
+        <button class="btn" style="width:100%;margin-bottom:10px;">Thêm nhân viên mới</button>
+        <button class="btn ghost" style="width:100%;">Xuất báo cáo tháng</button>
+      </div>
+    </div>
+  </div>
+ 
+</div>
+</body>
+</html>

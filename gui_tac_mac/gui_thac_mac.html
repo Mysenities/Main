@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gửi thắc mắc - Báo điện tử</title>
+<link rel="stylesheet" href="gui_thac_mac.css">
+</head>
+<body>
+ 
+    <header class="main-header">
+        <div class="header-container">
+            <div class="header-top">
+                <div class="header-left">
+                    <a href="index.html" class="logo">Báo điện tử</a>
+                    <nav class="sub-nav">
+                        <a href="index.html">Trang chủ</a>
+                        <a href="#">Thư viện</a>
+                    </nav>
+                </div>
+                <div class="header-right">
+                    <form class="search-form" action="tim-kiem.html" method="get">
+                        <input type="text" name="q" placeholder="Tìm..." class="search-input">
+                    </form>
+                    <a href="tim-kiem.html" class="advanced-search-link">Tìm nâng cao</a>
+                    <div class="icon-bell">🔔</div>
+                </div>
+            </div>
+ 
+            <nav class="categories-nav">
+                <a href="#">Thời sự</a>
+                <a href="#">Thế giới</a>
+                <a href="#">Kinh doanh</a>
+                <a href="#">Khoa học công nghệ</a>
+                <a href="#">Bất động sản</a>
+                <a href="#">Sức khỏe</a>
+                <a href="#">Giáo dục</a>
+                <a href="#">Pháp luật</a>
+            </nav>
+        </div>
+    </header>
+ 
+    <main class="main-container contact-page-layout">
+        <div class="contact-card">
+            <div class="contact-header">
+                <h1>Gửi thắc mắc</h1>
+                <p>Bố/bạn góp ý, báo lỗi bài viết, hoặc hỏi bất cứ điều gì — chúng tôi sẽ phản hồi sớm nhất.</p>
+            </div>
+ 
+            <form class="contact-body" action="#" method="post">
+ 
+                <div class="contact-row">
+                    <div class="contact-group">
+                        <label for="c-name">Họ và tên <span class="required">*</span></label>
+                        <input type="text" id="c-name" name="name" class="contact-input" placeholder="Nguyễn Văn A" required>
+                    </div>
+                    <div class="contact-group">
+                        <label for="c-email">Email <span class="required">*</span></label>
+                        <input type="email" id="c-email" name="email" class="contact-input" placeholder="ban@email.com" required>
+                    </div>
+                </div>
+ 
+                <div class="contact-group">
+                    <label for="c-topic">Loại thắc mắc <span class="required">*</span></label>
+                    <select id="c-topic" name="topic" class="contact-select" required>
+                        <option value="">-- Chọn loại thắc mắc --</option>
+                        <option value="loi-noi-dung">Bài viết sai thông tin / lỗi nội dung</option>
+                        <option value="loi-ky-thuat">Lỗi kỹ thuật trên trang web</option>
+                        <option value="ban-quyen">Vấn đề bản quyền</option>
+                        <option value="gop-y">Góp ý, đề xuất</option>
+                        <option value="khac">Khác</option>
+                    </select>
+                </div>
+ 
+                <div class="contact-group">
+                    <label for="c-link">Đường dẫn bài viết liên quan (nếu có)</label>
+                    <input type="url" id="c-link" name="article_url" class="contact-input" placeholder="https://...">
+                    <div class="contact-hint">Bỏ trống nếu thắc mắc không liên quan đến một bài viết cụ thể.</div>
+                </div>
+ 
+                <div class="contact-group">
+                    <label for="c-message">Nội dung thắc mắc <span class="required">*</span></label>
+                    <textarea id="c-message" name="message" class="contact-textarea" placeholder="Mô tả chi tiết thắc mắc của bạn..." required></textarea>
+                </div>
+ 
+                <div class="contact-success" id="contact-success">
+                    Cảm ơn bạn đã gửi thắc mắc. Chúng tôi sẽ phản hồi qua email trong thời gian sớm nhất.
+                </div>
+ 
+                <div class="contact-actions">
+                    <button type="reset" class="btn-cancel">Xóa nội dung</button>
+                    <button type="submit" class="btn-submit">Gửi thắc mắc</button>
+                </div>
+            </form>
+        </div>
+    </main>
+ 
+</body>
+</html>

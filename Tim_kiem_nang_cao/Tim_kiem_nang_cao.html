@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tìm kiếm nâng cao - Báo điện tử</title>
+<link rel="stylesheet" href="Tim_kiem_nang_cao.css">
+</head>
+<body>
+ 
+    <header class="main-header">
+        <div class="header-container">
+            <div class="header-top">
+                <div class="header-left">
+                    <a href="index.html" class="logo">Báo điện tử</a>
+                    <nav class="sub-nav">
+                        <a href="index.html">Trang chủ</a>
+                        <a href="#">Thư viện</a>
+                    </nav>
+                </div>
+                <div class="header-right">
+                    <form class="search-form" action="tim-kiem.html" method="get">
+                        <input type="text" name="q" placeholder="Tìm..." class="search-input">
+                    </form>
+                    <a href="tim-kiem.html" class="advanced-search-link">Tìm nâng cao</a>
+                    <div class="icon-bell">🔔</div>
+                </div>
+            </div>
+ 
+            <nav class="categories-nav">
+                <a href="#">Thời sự</a>
+                <a href="#">Thế giới</a>
+                <a href="#">Kinh doanh</a>
+                <a href="#">Khoa học công nghệ</a>
+                <a href="#">Bất động sản</a>
+                <a href="#">Sức khỏe</a>
+                <a href="#">Giáo dục</a>
+                <a href="#">Pháp luật</a>
+            </nav>
+        </div>
+    </header>
+ 
+    <main class="main-container search-page-layout">
+ 
+        <!-- CỘT TRÁI: BỘ LỌC TÌM KIẾM NÂNG CAO -->
+        <aside class="filter-card">
+            <div class="filter-header">Tìm kiếm nâng cao</div>
+            <form class="filter-body" action="tim-kiem.html" method="get">
+ 
+                <div class="filter-group">
+                    <label for="f-keyword">Từ khóa</label>
+                    <input type="text" id="f-keyword" name="q" class="filter-input" placeholder="Nhập từ khóa...">
+                </div>
+ 
+                <div class="filter-group">
+                    <label for="f-category">Chuyên mục</label>
+                    <select id="f-category" name="category" class="filter-select">
+                        <option value="">Tất cả chuyên mục</option>
+                        <option value="thoi-su">Thời sự</option>
+                        <option value="the-gioi">Thế giới</option>
+                        <option value="kinh-doanh">Kinh doanh</option>
+                        <option value="cong-nghe">Khoa học công nghệ</option>
+                        <option value="bat-dong-san">Bất động sản</option>
+                        <option value="suc-khoe">Sức khỏe</option>
+                        <option value="giao-duc">Giáo dục</option>
+                        <option value="phap-luat">Pháp luật</option>
+                    </select>
+                </div>
+ 
+                <div class="filter-group">
+                    <label>Khoảng thời gian</label>
+                    <div class="filter-date-row">
+                        <input type="date" name="from" class="filter-input">
+                        <span>-</span>
+                        <input type="date" name="to" class="filter-input">
+                    </div>
+                </div>
+ 
+                <div class="filter-group">
+                    <label for="f-sort">Sắp xếp theo</label>
+                    <select id="f-sort" name="sort" class="filter-select">
+                        <option value="newest">Mới nhất</option>
+                        <option value="oldest">Cũ nhất</option>
+                        <option value="relevance">Liên quan nhất</option>
+                    </select>
+                </div>
+ 
+                <div class="filter-actions">
+                    <button type="submit" class="btn-search">Tìm kiếm</button>
+                    <button type="reset" class="btn-reset">Đặt lại</button>
+                </div>
+            </form>
+        </aside>
+ 
+        <!-- CỘT PHẢI: KẾT QUẢ TÌM KIẾM -->
+        <section>
+            <div class="results-header">
+                <span class="results-title">Kết quả tìm kiếm</span>
+                <span class="results-count">Tìm thấy 3 kết quả</span>
+            </div>
+ 
+            <!-- Mỗi kết quả là 1 khối .result-item -->
+            <div class="result-item">
+                <div class="result-thumb">📷</div>
+                <div class="result-text-block">
+                    <span class="result-category">Kinh doanh</span>
+                    <h4 class="result-title">Giá vàng vượt 100 triệu đồng/lượng lần đầu trong lịch sử</h4>
+                    <p class="result-summary">Giá vàng trong nước tăng theo đà tăng của giá vàng thế giới giữa lo ngại lạm phát toàn cầu.</p>
+                    <span class="result-time">27/06/2026</span>
+                </div>
+            </div>
+ 
+            <div class="result-item">
+                <div class="result-thumb">📷</div>
+                <div class="result-text-block">
+                    <span class="result-category">Khoa học công nghệ</span>
+                    <h4 class="result-title">Apple mở trung tâm nghiên cứu AI đầu tiên tại TP.HCM</h4>
+                    <p class="result-summary">Trung tâm sẽ tập trung phát triển các tính năng AI cho thị trường Đông Nam Á.</p>
+                    <span class="result-time">26/06/2026</span>
+                </div>
+            </div>
+ 
+            <div class="result-item">
+                <div class="result-thumb">📷</div>
+                <div class="result-text-block">
+                    <span class="result-category">Kinh doanh</span>
+                    <h4 class="result-title">VN-Index vượt mốc 1.400 điểm trong phiên giao dịch sáng nay</h4>
+                    <p class="result-summary">Dòng tiền khối ngoại quay lại mua mạnh nhóm cổ phiếu ngân hàng và bất động sản.</p>
+                    <span class="result-time">30/06/2026</span>
+                </div>
+            </div>
+ 
+            <!-- Nếu không có kết quả, xóa các .result-item ở trên và mở khối dưới này ra -->
+            <!--
+            <div class="empty-state">
+                Không tìm thấy bài viết phù hợp. Hãy thử từ khóa khác hoặc bỏ bớt bộ lọc.
+            </div>
+            -->
+        </section>
+ 
+    </main>
+ 
+</body>
+</html>
+ 
