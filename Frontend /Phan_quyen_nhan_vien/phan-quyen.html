@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phân quyền nhân viên - Báo điện tử</title>
+    <link rel="stylesheet" href="../Trang_Chu/codeweb.css">
+    <link rel="stylesheet" href="phanquyen.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="header-container">
+            <div class="header-top">
+                <div class="header-left">
+                    <span class="logo">Báo điện tử</span>
+                    <nav class="sub-nav">
+                        <a href="../Trang_quan_tri_vien/quan-tri.html">Trang quản trị</a>
+                        <a href="#">Thư viện</a>
+                    </nav>
+                </div>
+                <div class="header-right">
+                    <input type="text" placeholder="Tìm..." class="search-input">
+                    <div class="icon-bell">🔔</div>
+
+                    <div class="user-dropdown-group">
+                        <div class="avatar-blue">U</div>
+                        <div class="dropdown-menu">
+                            <a href="#">Đăng nhập</a>
+                            <a href="#">Đăng xuất</a>
+                            <a href="../Xu_ly_thac_mac/thac-mac.html" class="text-danger">Báo cáo thắc mắc</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <nav class="categories-nav">
+                <a href="#">Thời sự</a>
+                <a href="#">Thế giới</a>
+                <a href="#">Kinh doanh</a>
+                <a href="#">Khoa học công nghệ</a>
+                <a href="#">Bất động sản</a>
+                <a href="#">Sức khỏe</a>
+                <a href="#">Giáo dục</a>
+                <a href="#">Pháp luật</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Nội dung chỉ hiển thị nếu role = quantri -->
+    <main class="main-container" id="admin-content" style="display:none; padding-top:16px; padding-bottom:32px;">
+
+        <div class="pq-page-head">
+            <div>
+                <h1 class="pq-page-title">Phân quyền nhân viên</h1>
+                <p class="pq-page-sub">Quản lý vai trò (Role) và gán vai trò cho từng người dùng</p>
+            </div>
+        </div>
+
+        <div class="pq-tabs">
+            <button class="pq-tab-btn active" data-tab="roles">Quản lý vai trò</button>
+            <button class="pq-tab-btn" data-tab="assign">Gán vai trò cho nhân viên</button>
+        </div>
+
+        <!-- TAB 1: Quản lý vai trò (bảng Role) -->
+        <section class="pq-tab-panel" id="pq-panel-roles">
+            <div class="pq-panel-head">
+                <p class="pq-panel-desc">Mỗi vai trò gồm tên và 5 quyền hạn, khớp trực tiếp với các cột trong bảng <code>Role</code>.</p>
+                <button class="pq-btn-primary" id="pq-add-role-btn">+ Thêm vai trò</button>
+            </div>
+
+            <div class="pq-table-wrap">
+                <table class="pq-table">
+                    <thead>
+                        <tr>
+                            <th>Role_Id</th>
+                            <th>Name</th>
+                            <th>reviewArticle_yes</th>
+                            <th>reviewComment_yes</th>
+                            <th>changeCategory_yes</th>
+                            <th>write_yes</th>
+                            <th>deleteUser_yes</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="pq-role-table-body"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- TAB 2: Gán vai trò cho User (bảng UserRole, nhiều-nhiều) -->
+        <section class="pq-tab-panel" id="pq-panel-assign" style="display:none;">
+            <div class="pq-panel-head">
+                <p class="pq-panel-desc">Một người dùng có thể được gán nhiều vai trò cùng lúc (bảng <code>UserRole</code>).</p>
+            </div>
+
+            <div class="pq-table-wrap">
+                <table class="pq-table" id="pq-assign-table">
+                    <thead>
+                        <tr id="pq-assign-head-row">
+                            <th>User_Id</th>
+                            <th>Username</th>
+                        </tr>
+                    </thead>
+                    <tbody id="pq-assign-table-body"></tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <!-- Nội dung hiển thị khi KHÔNG phải quản trị viên -->
+    <main class="main-container" id="denied-content" style="display:none; padding-top:64px; text-align:center;">
+        <p class="pq-denied-text">Bạn không có quyền truy cập trang này. Trang chỉ dành cho quản trị viên.</p>
+        <a href="../Trang_Chu/codeweb.html" class="pq-denied-link">Quay về trang chủ</a>
+    </main>
+
+    <!-- Modal thêm/sửa vai trò -->
+    <div class="pq-modal-overlay" id="pq-modal-overlay">
+        <div class="pq-modal">
+            <div class="pq-modal-header">
+                <span id="pq-modal-title">Thêm vai trò mới</span>
+                <span class="pq-modal-close" id="pq-modal-close">&times;</span>
+            </div>
+            <div class="pq-modal-body">
+                <label class="pq-label" for="pq-role-name">Tên vai trò (Name)</label>
+                <input type="text" id="pq-role-name" class="pq-input" placeholder="Vd: Biên tập viên">
+
+                <label class="pq-check-row"><input type="checkbox" id="pq-perm-reviewArticle"> reviewArticle_yes — Duyệt bài viết</label>
+                <label class="pq-check-row"><input type="checkbox" id="pq-perm-reviewComment"> reviewComment_yes — Duyệt bình luận</label>
+                <label class="pq-check-row"><input type="checkbox" id="pq-perm-changeCategory"> changeCategory_yes — Sửa chuyên mục</label>
+                <label class="pq-check-row"><input type="checkbox" id="pq-perm-write"> write_yes — Viết bài</label>
+                <label class="pq-check-row"><input type="checkbox" id="pq-perm-deleteUser"> deleteUser_yes — Xóa người dùng</label>
+            </div>
+            <div class="pq-modal-footer">
+                <button class="pq-btn-secondary" id="pq-cancel-role">Hủy</button>
+                <button class="pq-btn-primary" id="pq-confirm-role">Lưu</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /*
+         * LƯU Ý: kiểm tra role ở đây chỉ demo phía client (localStorage), không phải bảo mật thật.
+         * Trang này chỉ cho phép role = "quantri". Khi làm backend thật, Servlet/Filter xử lý
+         * trang này cần kiểm tra quyền của user qua bảng UserRole/Role thật trong DB.
+         */
+        function getCurrentRole() {
+            return localStorage.getItem('userRole');
+        }
+
+        const currentRole = getCurrentRole();
+        if (currentRole === 'quantri') {
+            document.getElementById('admin-content').style.display = 'block';
+        } else {
+            document.getElementById('denied-content').style.display = 'block';
+        }
+
+        /* ============================================================
+         * DỮ LIỆU MẪU — khớp trực tiếp với bảng Role và UserRole trong DB
+         * Khi tích hợp thật: lấy 2 danh sách này qua fetch tới Servlet
+         * (SELECT * FROM Role, SELECT * FROM UserRole JOIN [User])
+         * ============================================================ */
+        let roles = [
+            { Role_Id: 1, Name: 'Quản trị viên', reviewArticle_yes: true, reviewComment_yes: true, changeCategory_yes: true, write_yes: true, deleteUser_yes: true },
+            { Role_Id: 2, Name: 'Biên tập viên', reviewArticle_yes: true, reviewComment_yes: false, changeCategory_yes: false, write_yes: true, deleteUser_yes: false },
+            { Role_Id: 3, Name: 'Kiểm duyệt viên', reviewArticle_yes: false, reviewComment_yes: true, changeCategory_yes: false, write_yes: false, deleteUser_yes: false }
+        ];
+
+        // userRoleMap[User_Id] = mảng các Role_Id mà user đó đang giữ (mô phỏng bảng UserRole)
+        let users = [
+            { User_Id: 1, Username: 'nguyenvana' },
+            { User_Id: 2, Username: 'tranthib' },
+            { User_Id: 3, Username: 'levanc' }
+        ];
+        let userRoleMap = {
+            1: [1],
+            2: [2],
+            3: [3, 2]
+        };
+
+        const permFields = [
+            { key: 'reviewArticle_yes' },
+            { key: 'reviewComment_yes' },
+            { key: 'changeCategory_yes' },
+            { key: 'write_yes' },
+            { key: 'deleteUser_yes' }
+        ];
+
+        let editingRoleId = null;
+
+        /* ---------- TAB SWITCH ---------- */
+        document.querySelectorAll('.pq-tab-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.pq-tab-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const tab = btn.dataset.tab;
+                document.getElementById('pq-panel-roles').style.display = tab === 'roles' ? 'block' : 'none';
+                document.getElementById('pq-panel-assign').style.display = tab === 'assign' ? 'block' : 'none';
+                if (tab === 'assign') renderAssignTable();
+            });
+        });
+
+        /* ---------- TAB 1: QUẢN LÝ VAI TRÒ ---------- */
+        function renderRoleTable() {
+            const tbody = document.getElementById('pq-role-table-body');
+            tbody.innerHTML = '';
+
+            roles.forEach(r => {
+                const tr = document.createElement('tr');
+                const permCells = permFields.map(f => `
+                    <td class="pq-center">${r[f.key] ? '✔️' : '—'}</td>
+                `).join('');
+
+                tr.innerHTML = `
+                    <td>${r.Role_Id}</td>
+                    <td>${r.Name}</td>
+                    ${permCells}
+                    <td>
+                        <button class="pq-btn-save" data-id="${r.Role_Id}" data-action="edit">Sửa</button>
+                        <button class="pq-btn-danger" data-id="${r.Role_Id}" data-action="delete">Xóa</button>
+                    </td>
+                `;
+                tbody.appendChild(tr);
+            });
+
+            tbody.querySelectorAll('[data-action="edit"]').forEach(btn => {
+                btn.addEventListener('click', () => openRoleModal(Number(btn.dataset.id)));
+            });
+            tbody.querySelectorAll('[data-action="delete"]').forEach(btn => {
+                btn.addEventListener('click', () => deleteRole(Number(btn.dataset.id)));
+            });
+        }
+
+        function openRoleModal(roleId) {
+            editingRoleId = roleId;
+            const modalTitle = document.getElementById('pq-modal-title');
+
+            if (roleId === null) {
+                modalTitle.textContent = 'Thêm vai trò mới';
+                document.getElementById('pq-role-name').value = '';
+                permFields.forEach(f => {
+                    document.getElementById('pq-perm-' + f.key.replace('_yes', '')).checked = false;
+                });
+            } else {
+                const r = roles.find(x => x.Role_Id === roleId);
+                modalTitle.textContent = 'Sửa vai trò: ' + r.Name;
+                document.getElementById('pq-role-name').value = r.Name;
+                permFields.forEach(f => {
+                    document.getElementById('pq-perm-' + f.key.replace('_yes', '')).checked = !!r[f.key];
+                });
+            }
+            document.getElementById('pq-modal-overlay').classList.add('open');
+        }
+
+        function closeRoleModal() {
+            document.getElementById('pq-modal-overlay').classList.remove('open');
+        }
+
+        function deleteRole(roleId) {
+            const r = roles.find(x => x.Role_Id === roleId);
+            if (!confirm(`Xóa vai trò "${r.Name}"? Các user đang giữ vai trò này sẽ mất quyền tương ứng.`)) return;
+
+            roles = roles.filter(x => x.Role_Id !== roleId);
+            Object.keys(userRoleMap).forEach(uid => {
+                userRoleMap[uid] = userRoleMap[uid].filter(rid => rid !== roleId);
+            });
+            // TODO: khi có backend, gửi DELETE Role_Id qua Servlet (đồng thời xóa các dòng UserRole liên quan)
+            renderRoleTable();
+        }
+
+        document.getElementById('pq-add-role-btn').addEventListener('click', () => openRoleModal(null));
+        document.getElementById('pq-modal-close').addEventListener('click', closeRoleModal);
+        document.getElementById('pq-cancel-role').addEventListener('click', closeRoleModal);
+        document.getElementById('pq-modal-overlay').addEventListener('click', (e) => {
+            if (e.target.id === 'pq-modal-overlay') closeRoleModal();
+        });
+
+        document.getElementById('pq-confirm-role').addEventListener('click', () => {
+            const name = document.getElementById('pq-role-name').value.trim();
+            if (!name) {
+                alert('Vui lòng nhập tên vai trò.');
+                return;
+            }
+
+            const newRoleData = { Name: name };
+            permFields.forEach(f => {
+                newRoleData[f.key] = document.getElementById('pq-perm-' + f.key.replace('_yes', '')).checked;
+            });
+
+            if (editingRoleId === null) {
+                const newId = roles.length ? Math.max(...roles.map(r => r.Role_Id)) + 1 : 1;
+                roles.push({ Role_Id: newId, ...newRoleData });
+                // TODO: khi có backend, gửi POST tạo Role mới qua Servlet
+            } else {
+                const r = roles.find(x => x.Role_Id === editingRoleId);
+                Object.assign(r, newRoleData);
+                // TODO: khi có backend, gửi PUT cập nhật Role qua Servlet
+            }
+
+            renderRoleTable();
+            closeRoleModal();
+        });
+
+        /* ---------- TAB 2: GÁN VAI TRÒ CHO NHÂN VIÊN ---------- */
+        function renderAssignTable() {
+            const headRow = document.getElementById('pq-assign-head-row');
+            headRow.innerHTML = '<th>User_Id</th><th>Username</th>' +
+                roles.map(r => `<th>${r.Name}</th>`).join('');
+
+            const tbody = document.getElementById('pq-assign-table-body');
+            tbody.innerHTML = '';
+
+            users.forEach(u => {
+                const tr = document.createElement('tr');
+                const roleCells = roles.map(r => `
+                    <td class="pq-center">
+                        <input type="checkbox" class="pq-checkbox pq-assign-checkbox"
+                            data-user="${u.User_Id}" data-role="${r.Role_Id}"
+                            ${(userRoleMap[u.User_Id] || []).includes(r.Role_Id) ? 'checked' : ''}>
+                    </td>
+                `).join('');
+
+                tr.innerHTML = `<td>${u.User_Id}</td><td>${u.Username}</td>${roleCells}`;
+                tbody.appendChild(tr);
+            });
+
+            tbody.querySelectorAll('.pq-assign-checkbox').forEach(cb => {
+                cb.addEventListener('change', () => {
+                    const uid = Number(cb.dataset.user);
+                    const rid = Number(cb.dataset.role);
+                    if (!userRoleMap[uid]) userRoleMap[uid] = [];
+
+                    if (cb.checked) {
+                        if (!userRoleMap[uid].includes(rid)) userRoleMap[uid].push(rid);
+                        // TODO: khi có backend, gửi INSERT vào UserRole(User_Id, Role_Id) qua Servlet
+                    } else {
+                        userRoleMap[uid] = userRoleMap[uid].filter(r => r !== rid);
+                        // TODO: khi có backend, gửi DELETE khỏi UserRole(User_Id, Role_Id) qua Servlet
+                    }
+                });
+            });
+        }
+
+        renderRoleTable();
+    </script>
+
+</body>
+</html>

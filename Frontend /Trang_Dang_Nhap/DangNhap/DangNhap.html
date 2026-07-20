@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Đăng nhập - Báo điện tử</title>
+<link rel="stylesheet" href="DangNhap.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="header-container">
+            <div class="header-top">
+                <div class="header-left">
+                    <a href="../../Trang_Chu/codeweb.html" class="logo">Báo điện tử</a>
+                    <nav class="sub-nav">
+                        <a href="../../Trang_Chu/codeweb.html">Trang chủ</a>
+                        <a href="#">Thư viện</a>
+                    </nav>
+                </div>
+                <div class="header-right">
+                    <form class="search-form" action="#" method="get">
+                        <input type="text" name="q" placeholder="Tìm..." class="search-input">
+                    </form>
+                    <div class="icon-bell">🔔</div>
+                </div>
+            </div>
+
+            <nav class="categories-nav">
+                <a href="#">Thời sự</a>
+                <a href="#">Thế giới</a>
+                <a href="#">Kinh doanh</a>
+                <a href="#">Khoa học công nghệ</a>
+                <a href="#">Bất động sản</a>
+                <a href="#">Sức khỏe</a>
+                <a href="#">Giáo dục</a>
+                <a href="#">Pháp luật</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-container auth-page-layout">
+        <div class="auth-card">
+            <div class="auth-header">
+                <h1>Đăng nhập</h1>
+                <p>Đăng nhập để bình luận, lưu bài viết và theo dõi chuyên mục yêu thích.</p>
+            </div>
+
+            <form class="auth-body" action="#" method="post">
+
+                <div class="auth-group">
+                    <label for="login-email">Email hoặc tên đăng nhập <span class="required">*</span></label>
+                    <input type="text" id="login-email" name="email" class="auth-input" placeholder="ban@email.com" required>
+                </div>
+
+                <div class="auth-group">
+                    <label for="login-password">Mật khẩu <span class="required">*</span></label>
+                    <input type="password" id="login-password" name="password" class="auth-input" placeholder="••••••••" required>
+                </div>
+
+                <div class="auth-options">
+                    <label class="auth-checkbox">
+                        <input type="checkbox" name="remember">
+                        <span>Ghi nhớ đăng nhập</span>
+                    </label>
+                    <a href="../QuenMatKhau/QuenMatKhau.html" class="auth-link">Quên mật khẩu?</a>
+                </div>
+
+                <button type="submit" class="btn-submit">Đăng nhập</button>
+
+                <div class="auth-divider"><span>hoặc</span></div>
+
+                <p class="auth-footer-text">
+                    Chưa có tài khoản?
+                    <a href="../DangKy/DangKy.html" class="auth-link-strong">Đăng ký ngay</a>
+                </p>
+            </form>
+        </div>
+    </main>
+
+</body>
+</html>
